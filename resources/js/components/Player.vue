@@ -15,7 +15,7 @@
                 <h2>{{ player.first_name }} <strong>{{ player.last_name }}</strong></h2>
             </div>
             <div class="profile">
-                <img :src="('/images/players/' + (team == 'allblacks' ? 'allblacks/' : 'nba/') + player.image) + '?v' + player.id" :alt="player.first_name + ' ' + player.last_name" class="headshot" />
+                <img v-if="!this.isLoading" :src="('/images/players/' + (team == 'allblacks' ? 'allblacks/' : 'nba/') + player.image) + '?v' + player.id" :alt="player.first_name + ' ' + player.last_name" class="headshot" />
                 <div class="features">
                     <div class="feature" v-for="featured in player.featured" :key="featured.value">
                         <h3>{{ featured.label }}</h3>
