@@ -7,15 +7,15 @@
         <h1 v-if="isPageLoaded" :style="{color: colorTheme}">{{ team == 'allblacks' ? "All Blacks Rugby" : "NBA Basketball"}}</h1>
         <div class="card" v-if="isPageLoaded" :style="{borderTopColor: colorTheme}">
             <div class="image">
-                <img v-if="team == 'allblacks'" src="/images/teams/allblacks.png" alt="All blacks logo" class="logo" />
-                <img v-else :src="player.current_team == 'GSW' ? '/images/teams/gsw.png' : '/images/teams/mem.png'" alt="NBA logo" class="logo" />
+                <img v-if="team == 'allblacks'" :src="'/images/teams/allblacks.png' + '?v' + player.id" alt="All blacks logo" class="logo" />
+                <img v-else :src="(player.current_team == 'GSW' ? '/images/teams/gsw.png' : '/images/teams/mem.png') + '?v' + player.id" alt="NBA logo" class="logo" />
             </div>
             <div class="name">
                 <em>#{{ player.number }}</em>
                 <h2>{{ player.first_name }} <strong>{{ player.last_name }}</strong></h2>
             </div>
             <div class="profile">
-                <img :src="'/images/players/' + (team == 'allblacks' ? 'allblacks/' : 'nba/') + player.image" :alt="player.first_name + ' ' + player.last_name" class="headshot" />
+                <img :src="('/images/players/' + (team == 'allblacks' ? 'allblacks/' : 'nba/') + player.image) + '?v' + player.id" :alt="player.first_name + ' ' + player.last_name" class="headshot" />
                 <div class="features">
                     <div class="feature" v-for="featured in player.featured" :key="featured.value">
                         <h3>{{ featured.label }}</h3>
